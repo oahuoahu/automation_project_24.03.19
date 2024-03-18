@@ -1,7 +1,9 @@
 import getpass
+import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
 # 브라우저 꺼짐 방지 옵션
 chrome_options = Options()
@@ -12,12 +14,12 @@ driver = webdriver.Chrome(options=chrome_options)
 
 
 
-url = 'https://www.naver.com'
+url = 'https://focus.hanjin.com/login'
 driver.get(url)
 
 #로그인 페이지 이동 버튼 클릭
-login_page_btn = driver.find_element(By.XPATH,'//*[@id="account"]/div/a')
-login_page_btn.click()
+# login_page_btn = driver.find_element(By.XPATH,'//*[@id="account"]/div/a')
+# login_page_btn.click()
 
 
 
@@ -26,9 +28,12 @@ user_pw = getpass.getpass('비밀번호를 입력해주세요 : ')
 
 
 
+
+
 # 아이디와 비밀번호를 입력
-user_id_input = driver.find_element(By.ID,"id")
-user_pw_input = driver.find_element(By.ID,"pw")
+user_id_input = driver.find_element(By.XPATH,'//*[@id="__layout"]/div/section/div[3]/form/div[1]/div/input')
+user_pw_input = driver.find_element(By.XPATH,'//*[@id="__layout"]/div/section/div[3]/form/div[2]/div/input')
+
 
 user_id_input.send_keys(user_id)
 user_pw_input.send_keys(user_pw)
@@ -39,5 +44,28 @@ user_pw_input.send_keys(user_pw)
 # https://github.com/oahuoahu/automation_project_24.03.19
 
 #fhrmdlsqjxms
-login_btn = driver.find_element(By.XPATH,'//*[@id="log.login"]')
+# login_btn = driver.find_element(By.XPATH,'//*[@id="log.login"]')
+
+login_btn = driver.find_element(By.XPATH,'//*[@id="__layout"]/div/section/div[3]/form/div[4]/button')
 login_btn.click()
+
+
+
+
+# Dlvry_mngmnt_btn = driver.find_element(By.XPATH,'//*[@id="header"]/nav/ul/li[2]/div/ul/li[2]/a')
+# Dlvry_mngmnt_btn.click()
+
+
+# Dlvry_mngmnt_btn = driver.find_element(By.XPATH,'//*[@id="header"]/nav/ul/li[2]/div/ul/li[2]/a')
+# Dlvry_mngmnt_btn.click()
+
+time.sleep(0.5) 
+url = 'https://focus.hanjin.com/release/listup'
+driver.get(url)
+
+
+
+
+Blk_rgst = driver.find_element(By.XPATH,'//*[@id="__layout"]/div/main/div/section/div[1]/div[1]/div[2]/label')
+Blk_rgst.click()
+
